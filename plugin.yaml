@@ -1,0 +1,106 @@
+---
+id: ed-playgrounds
+name: Playgrounds Plugin
+version: 1
+api: 1.2
+author: LivingWithDragons
+icon: playground.svg
+description: |
+  Adds a playground editing mode to Every Door that focuses on the 'equipment' you find in playgrounds.
+  
+  Also improves the editing of playgrounds and some related features.
+experimental: true
+
+kinds:
+  playgroundArea:
+    - leisure=playground
+  playgroundFeature:
+    - amenity=bench
+    - amenity=waste_basket
+    - amenity=toilets
+    - leisure=picnic_table
+    - natural=tree
+    - barrier=gate
+  playgroundEquipment:
+    - matcher:
+    - playground:
+    - except: [ climbing, sand ]
+
+modes:
+  playground:
+    icon: playground.svg
+    iconActive: playground.svg
+    kinds: [playgroundArea, playgroundFeature, playgroundEquipment]
+    otherKinds: [micro]
+    defaultPresets:
+      - leisure/playground
+      - amenity/bench
+      - amenity/waste_basket
+      - amenity/toilets
+      - leisure/picnic_table
+  entrances:
+    hide: true
+
+fields:
+  pgName:
+    label: Name
+    key: name
+    type: text
+  pgDescription:
+    label: Description
+    key: description
+    type: text
+  pgMaterial:
+    label: Material
+    key: material
+    type: combo
+    customValues: true
+    options: [wood, metal, steel, plastic, rope, rubber, chain, concrete, stone]
+
+presets:
+  leisure/playground:
+    name: Playground
+    terms: [playground, playpark, play area, children's playground]
+    icon: playground.svg
+    tags:
+      leisure: playground
+    addTags:
+      leisure: playground
+    area: true
+    fields: [pgName, pgDescription]
+  amenity/bench:
+    name: Bench
+    tags: {amenity: bench}
+    addTags: {amenity: bench}
+    area: false
+    fields: [pgName, pgMaterial, pgDescription]
+  amenity/waste_basket:
+    name: Waste basket
+    tags: {amenity: waste_basket}
+    addTags: {amenity: waste_basket}
+    area: false
+    fields: [pgMaterial, pgDescription]
+  amenity/toilets:
+    name: Toilets
+    tags: {amenity: toilets}
+    addTags: {amenity: toilets}
+    area: true
+    fields: [pgName, pgDescription]
+  leisure/picnic_table:
+    name: Picnic table
+    tags: {leisure: picnic_table}
+    addTags: {leisure: picnic_table}
+    area: false
+    fields: [pgMaterial, pgDescription]
+  natural/tree:
+    name: Tree
+    tags: {natural: tree}
+    addTags: {natural: tree}
+    area: false
+    fields: [pgName, pgDescription]
+  playground/slide:
+    name: Slide
+    tags: {playground: slide}
+    addTags: {playground: slide}
+    area: false
+    fields: [pgName, pgDescription, pgMaterial]
