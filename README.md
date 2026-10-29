@@ -25,4 +25,4 @@ The distributable file is `ed-playgrounds.edp`.
 On your phone, open the `.edp` file with the Every Door app. The plugin is marked experimental while it is being developed & tested, eventually it will be available from the plugin library.
 
 ## Author
-Created by Gregory (LivingWithDragons) with the assistance of an LLM for initial rapid development.
+Created by Gregory (LivingWithDragons).
